@@ -1,0 +1,10 @@
+on: [workflow_dispatch]
+jobs:
+  create-artifact:
+    runs-on: ubuntu-latest
+    steps:
+      - run: dd if=/dev/urandom of=100mb-dummy-file.bin bs=100M count=1
+      - uses: actions/upload-artifact@v4.0.0
+        with:
+          name: 100MB-test-artifact
+          path: 100mb-dummy-file.bin
